@@ -66,12 +66,45 @@
         .stats-summary p { margin: 3px 0; color: #4a5568; }
         .stats-summary strong { color: #667eea; }
         
-        .stats-table-wrap { max-height: 400px; overflow-y auto; border: 1px solid #e2e8f0; border-radius: 6px; }
-        .stats-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-        .stats-table th { background: #667eea; color: white; padding: 8px 5px; position: sticky; top: 0; }
-        .stats-table td { padding: 6px 5px; border-bottom: 1px solid #f0f0f0; text-align: center; }
+        .stats-table-wrap { 
+            max-height: 400px; 
+            overflow-y: auto; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 6px; 
+            margin-bottom: 10px;
+        }
+        .stats-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 11px; 
+            table-layout: fixed;
+        }
+        .stats-table th { 
+            background: #667eea; 
+            color: white; 
+            padding: 8px 5px; 
+            position: sticky; 
+            top: 0; 
+            text-align: center;
+        }
+        .stats-table td { 
+            padding: 6px 5px; 
+            border-bottom: 1px solid #f0f0f0; 
+            text-align: center; 
+            word-break: break-word;
+        }
         .stats-table tr:hover { background: #f7fafc; }
-        .color-dot { width: 16px; height: 16px; border-radius: 3px; border: 1px solid #ddd; display: inline-block; vertical-align: middle; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .color-dot { 
+            width: 16px; 
+            height: 16px; 
+            border-radius: 3px; 
+            border: 1px solid #ddd; 
+            display: inline-block; 
+            vertical-align: middle; 
+            cursor: pointer; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            margin: 0 auto;
+        }
         .color-dot.selected { transform: scale(1.2); box-shadow: 0 0 0 2px #667eea, 0 0 8px rgba(102,126,234,0.6); }
         .color-dot:hover { transform: scale(1.1); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
         
@@ -91,7 +124,6 @@
         .modal-btn-success { background: #48bb78; color: white; }
         .modal-btn-close { background: #e2e8f0; color: #333; }
         
-        /* 色号替换相关样式 */
         .color-replace-section { display: none; margin-top: 15px; }
         .color-replace-section.show { display: block; }
         
@@ -115,13 +147,110 @@
         .replace-buttons .btn { margin: 0; flex: 1; }
         
         @media (max-width: 900px) {
-            .main-container { flex-direction: column; }
-            .control-panel, .stats-panel { width: 100%; }
-            .stats-panel { order: 3; }
+            .main-container { 
+                flex-direction: column; 
+                gap: 15px;
+            }
+            .control-panel, .stats-panel { 
+                width: 100%; 
+                max-width: 100%;
+            }
+            .stats-panel { 
+                order: 3; 
+                margin-top: 15px;
+                min-height: auto;
+            }
             .palette-grid { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
+            
+            .stats-table-wrap {
+                max-height: 500px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                margin-bottom: 15px;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                background: white;
+            }
+            
+            .stats-table {
+                font-size: 12px;
+                width: 100%;
+                min-width: 300px;
+            }
+            
+            .stats-table th {
+                padding: 10px 6px;
+                font-size: 12px;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            
+            .stats-table td {
+                padding: 8px 6px;
+                border-bottom: 1px solid #f0f0f0;
+                text-align: center;
+                vertical-align: middle;
+            }
+            
+            .stats-table th:nth-child(1),
+            .stats-table td:nth-child(1) {
+                width: 25%;
+                text-align: center;
+            }
+            
+            .stats-table th:nth-child(2),
+            .stats-table td:nth-child(2) {
+                width: 20%;
+            }
+            
+            .stats-table th:nth-child(3),
+            .stats-table td:nth-child(3) {
+                width: 25%;
+            }
+            
+            .stats-table th:nth-child(4),
+            .stats-table td:nth-child(4) {
+                width: 30%;
+            }
+            
+            .color-dot {
+                display: block;
+                margin: 0 auto;
+            }
+            
+            .panel {
+                margin-bottom: 0;
+                padding-bottom: 20px;
+            }
+            
+            .stats-summary {
+                margin-bottom: 15px;
+                padding: 12px;
+            }
         }
         
-        /* 新增通知样式 */
+        @media (max-width: 480px) {
+            .stats-table {
+                font-size: 11px;
+            }
+            
+            .stats-table th,
+            .stats-table td {
+                padding: 6px 4px;
+            }
+            
+            .color-dot {
+                width: 14px;
+                height: 14px;
+            }
+            
+            .stats-summary {
+                font-size: 11px;
+                padding: 10px;
+            }
+        }
+        
         .toast {
             position: fixed;
             bottom: 20px;
@@ -190,7 +319,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* 下载选项弹窗 */
         .download-options {
             display: none;
             position: fixed;
@@ -263,7 +391,6 @@
             color: #2d3748;
         }
         
-        /* 记住选择选项 */
         .remember-option {
             margin-top: 15px;
             text-align: left;
@@ -284,7 +411,6 @@
             accent-color: #667eea;
         }
         
-        /* 新增：手机端专用下载提示 */
         .mobile-download-guide {
             display: none;
             position: fixed;
@@ -357,7 +483,6 @@
             color: #333;
         }
         
-        /* 新增：下载进度条 */
         .download-progress {
             display: none;
             position: fixed;
@@ -398,6 +523,18 @@
         .progress-text {
             font-size: 14px;
             color: #666;
+        }
+        
+        .stats-panel.auto-height .stats-table-wrap {
+            max-height: none;
+            height: auto;
+            overflow: visible;
+        }
+        
+        .stats-panel:after {
+            content: '';
+            display: table;
+            clear: both;
         }
     </style>
 </head>
@@ -443,7 +580,6 @@
         <button class="btn btn-primary" onclick="generatePattern()">✨ 生成图纸</button>
         <button class="btn btn-success" id="downloadBtn" onclick="openDownloadModal()">💾 保存下载</button>
         
-        <!-- 新增色号替换区域 -->
         <div class="color-replace-section" id="colorReplaceSection">
             <div class="section-title">🎨 色号替换</div>
             <div class="selected-color-info" id="selectedColorInfo">
@@ -481,7 +617,6 @@
         <div class="stats-table-wrap">
             <table class="stats-table"><thead><tr><th>色号</th><th>颜色</th><th>数量</th><th>占比</th></tr></thead><tbody id="statsBody"></tbody></table>
         </div>
-        <!-- 删除了导出CSV按钮 -->
     </div>
 </div>
 <div class="modal" id="downloadModal">
@@ -507,7 +642,6 @@
     </div>
 </div>
 
-<!-- 下载选项弹窗 -->
 <div id="downloadOptions" class="download-options">
     <div class="download-options-content">
         <div class="download-options-title">选择保存方式</div>
@@ -542,18 +676,14 @@
     </div>
 </div>
 
-<!-- 新增：高清下载专用Canvas -->
 <canvas id="highResCanvas" style="display:none;"></canvas>
 <canvas id="statsCanvas" style="display:none;"></canvas>
-<!-- 新增加载动画 -->
 <div id="loading" class="loading">
     <div class="loading-spinner"></div>
     <p id="loadingText">正在处理...</p>
 </div>
-<!-- 新增 toast 通知 -->
 <div id="toast" class="toast"></div>
 
-<!-- 新增：手机端下载引导 -->
 <div id="mobileDownloadGuide" class="mobile-download-guide">
     <h4>📱 手机保存到相册指南</h4>
     <ol>
@@ -574,7 +704,6 @@
     </div>
 </div>
 
-<!-- 新增：下载进度条 -->
 <div id="downloadProgress" class="download-progress">
     <h4>正在下载...</h4>
     <div class="progress-bar">
@@ -672,26 +801,22 @@ PALETTES.mard_72 = PALETTES.mard_full.filter((_,i) => i%2 === 0).slice(0, 72);
 PALETTES.mard_48 = PALETTES.mard_full.filter((_,i) => i%3 === 0).slice(0, 48);
 PALETTES.artkal_c = PALETTES.artkal_a.map(c => ({...c, id: 'C' + c.id.slice(1)}));
 
-// 新增：高清设置
-const SCALE_FACTOR = 3; // 显示用缩放
-const DOWNLOAD_SCALE_FACTOR = 5; // 下载用更高清的缩放
-const CELL_SIZE = 26 * SCALE_FACTOR; // 显示用单元格大小
-const DOWNLOAD_CELL_SIZE = 26 * DOWNLOAD_SCALE_FACTOR; // 下载用单元格大小
+const SCALE_FACTOR = 3;
+const DOWNLOAD_SCALE_FACTOR = 5;
+const CELL_SIZE = 26 * SCALE_FACTOR;
+const DOWNLOAD_CELL_SIZE = 26 * DOWNLOAD_SCALE_FACTOR;
 
 let uploadedImage = null, gridData = [], colorStats = [], canvasScale = 1, gridWidth = 0, gridHeight = 0;
 let downloadCounter = 0;
 let currentDownloadType = 'pattern';
 let rememberedChoice = null;
 let rememberChoiceChecked = false;
+let selectedColor = null;
+let selectedPaletteColor = null;
+let originalGridData = [];
+let originalColorStats = [];
+let colorReplacements = {};
 
-// 新增：颜色替换相关变量
-let selectedColor = null; // 当前选中的要替换的颜色
-let selectedPaletteColor = null; // 当前选中的调色盘颜色
-let originalGridData = []; // 原始图纸数据备份
-let originalColorStats = []; // 原始颜色统计备份
-let colorReplacements = {}; // 记录颜色替换映射
-
-// 初始化时从localStorage读取记忆的选择
 if (localStorage.getItem('rememberDownloadChoice') === 'true') {
     rememberedChoice = localStorage.getItem('downloadChoice');
     rememberChoiceChecked = true;
@@ -710,7 +835,6 @@ function isAndroid() {
     return /Android/i.test(navigator.userAgent);
 }
 
-// 新增：显示通知
 function showToast(message, type = 'info') {
     const toast = document.getElementById('toast');
     toast.textContent = message;
@@ -736,7 +860,6 @@ function showToast(message, type = 'info') {
     }, 3000);
 }
 
-// 新增：显示/隐藏加载动画
 function showLoading(text = '正在处理...') {
     const loading = document.getElementById('loading');
     const loadingText = document.getElementById('loadingText');
@@ -749,37 +872,29 @@ function hideLoading() {
     loading.classList.remove('show');
 }
 
-// ==================== 下载进度和引导 ====================
-
-// 显示下载进度
 function showDownloadProgress(initialText = '正在处理...') {
     document.getElementById('progressText').textContent = initialText;
     document.getElementById('progressFill').style.width = '0%';
     document.getElementById('downloadProgress').classList.add('show');
 }
 
-// 更新下载进度
 function updateDownloadProgress(text, percent) {
     document.getElementById('progressText').textContent = text;
     document.getElementById('progressFill').style.width = percent + '%';
 }
 
-// 隐藏下载进度
 function hideDownloadProgress() {
     document.getElementById('downloadProgress').classList.remove('show');
 }
 
-// 显示手机下载指南
 function showMobileDownloadGuide() {
     document.getElementById('mobileDownloadGuide').classList.add('show');
 }
 
-// 关闭手机下载指南
 function closeMobileGuide() {
     document.getElementById('mobileDownloadGuide').classList.remove('show');
 }
 
-// 显示iOS专用下载指南
 function showIOSDownloadGuide() {
     const guide = document.getElementById('mobileDownloadGuide');
     guide.querySelector('h4').textContent = '📱 iOS保存到相册指南';
@@ -799,7 +914,6 @@ function showIOSDownloadGuide() {
     guide.classList.add('show');
 }
 
-// 显示Android专用下载指南
 function showAndroidDownloadGuide() {
     const guide = document.getElementById('mobileDownloadGuide');
     guide.querySelector('h4').textContent = '📱 Android保存到相册指南';
@@ -820,7 +934,6 @@ function showAndroidDownloadGuide() {
     guide.classList.add('show');
 }
 
-// 开始手机下载
 function startMobileDownload() {
     closeMobileGuide();
     if (isIOS()) {
@@ -832,54 +945,41 @@ function startMobileDownload() {
     }
 }
 
-// ==================== 改进的手机相册保存功能 ====================
-
-// 方式2：保存到手机相册 - 改进版本
 function saveToPhotoAlbum() {
-    // 如果是iOS设备，使用特定方法
     if (isIOS()) {
         saveToIOSAlbum();
         return;
     }
     
-    // 如果是Android设备
     if (isAndroid()) {
         saveToAndroidAlbum();
         return;
     }
     
-    // 其他设备使用通用方法
     saveToAlbumUniversal();
 }
 
-// iOS专用保存方法
 function saveToIOSAlbum() {
     showDownloadProgress('正在为iOS设备生成图片...');
     hideDownloadOptions();
     updateRememberChoice('album');
     
-    // 延迟执行以确保UI更新
     setTimeout(() => {
         try {
-            // 先生成高清图片
             renderHighResCanvas(currentDownloadType);
             const highResCanvas = document.getElementById('highResCanvas');
             
-            // 生成文件名
             const filename = currentDownloadType === 'pattern' ? 
                 `拼豆图纸_${gridWidth}x${gridHeight}.png` : 
                 `拼豆统计_${gridWidth}x${gridHeight}.png`;
             
-            // iOS 14+ 可以使用新的API
             if (typeof window.showOpenFilePicker !== 'undefined') {
                 saveWithFileSystemAccess(highResCanvas, filename);
                 return;
             }
             
-            // iOS 13及以下或没有新API
             updateDownloadProgress('正在生成图片数据...', 30);
             
-            // 方法1: 尝试使用a标签下载
             highResCanvas.toBlob(blob => {
                 if (!blob) {
                     hideDownloadProgress();
@@ -889,14 +989,12 @@ function saveToIOSAlbum() {
                 
                 updateDownloadProgress('正在创建下载链接...', 60);
                 
-                // 创建下载链接
                 const url = URL.createObjectURL(blob);
                 const link = document.createElement('a');
                 link.href = url;
                 link.download = filename;
                 link.style.display = 'none';
                 
-                // 清理函数
                 const cleanup = () => {
                     setTimeout(() => {
                         URL.revokeObjectURL(url);
@@ -913,12 +1011,10 @@ function saveToIOSAlbum() {
                 
                 updateDownloadProgress('正在触发下载...', 80);
                 
-                // iOS特殊处理：触发点击后显示指南
                 try {
                     link.click();
                     updateDownloadProgress('下载已开始', 90);
                     
-                    // 显示iOS专用指南
                     setTimeout(() => {
                         hideDownloadProgress();
                         showIOSDownloadGuide();
@@ -943,7 +1039,6 @@ function saveToIOSAlbum() {
     }, 300);
 }
 
-// Android专用保存方法
 function saveToAndroidAlbum() {
     showDownloadProgress('正在为Android设备生成图片...');
     hideDownloadOptions();
@@ -951,20 +1046,16 @@ function saveToAndroidAlbum() {
     
     setTimeout(() => {
         try {
-            // 先生成高清图片
             renderHighResCanvas(currentDownloadType);
             const highResCanvas = document.getElementById('highResCanvas');
             
-            // 生成文件名
             const filename = currentDownloadType === 'pattern' ? 
                 `拼豆图纸_${gridWidth}x${gridHeight}.png` : 
                 `拼豆统计_${gridWidth}x${gridHeight}.png`;
             
             updateDownloadProgress('正在生成图片数据...', 30);
             
-            // Android可以使用多种方法
             if (navigator.share && navigator.canShare) {
-                // 方法1: Web Share API
                 highResCanvas.toBlob(blob => {
                     if (!blob) {
                         hideDownloadProgress();
@@ -988,7 +1079,6 @@ function saveToAndroidAlbum() {
                         })
                         .catch(err => {
                             if (err.name !== 'AbortError') {
-                                // 分享失败，回退到下载
                                 downloadForAndroid(blob, filename);
                             } else {
                                 hideDownloadProgress();
@@ -999,7 +1089,6 @@ function saveToAndroidAlbum() {
                     }
                 }, 'image/png', 1.0);
             } else {
-                // 方法2: 直接下载
                 highResCanvas.toBlob(blob => {
                     downloadForAndroid(blob, filename);
                 }, 'image/png', 1.0);
@@ -1013,7 +1102,6 @@ function saveToAndroidAlbum() {
     }, 300);
 }
 
-// Android下载辅助函数
 function downloadForAndroid(blob, filename) {
     updateDownloadProgress('正在创建下载...', 70);
     
@@ -1023,7 +1111,6 @@ function downloadForAndroid(blob, filename) {
     link.download = filename;
     link.style.display = 'none';
     
-    // 清理函数
     const cleanup = () => {
         setTimeout(() => {
             URL.revokeObjectURL(url);
@@ -1041,7 +1128,6 @@ function downloadForAndroid(blob, filename) {
     updateDownloadProgress('正在触发下载...', 85);
     
     try {
-        // 创建并触发点击事件
         const event = new MouseEvent('click', {
             view: window,
             bubbles: true,
@@ -1051,7 +1137,6 @@ function downloadForAndroid(blob, filename) {
         
         updateDownloadProgress('下载已开始', 95);
         
-        // 显示Android下载指南
         setTimeout(() => {
             hideDownloadProgress();
             showAndroidDownloadGuide();
@@ -1067,7 +1152,6 @@ function downloadForAndroid(blob, filename) {
     }
 }
 
-// 通用保存方法
 function saveToAlbumUniversal() {
     showDownloadProgress('正在生成高清图片...');
     hideDownloadOptions();
@@ -1075,18 +1159,15 @@ function saveToAlbumUniversal() {
     
     setTimeout(() => {
         try {
-            // 先生成高清图片
             renderHighResCanvas(currentDownloadType);
             const highResCanvas = document.getElementById('highResCanvas');
             
-            // 生成文件名
             const filename = currentDownloadType === 'pattern' ? 
                 `拼豆图纸_${gridWidth}x${gridHeight}_高清.png` : 
                 `拼豆统计_${gridWidth}x${gridHeight}_高清.png`;
             
             updateDownloadProgress('正在生成图片数据...', 40);
             
-            // 使用Blob和ObjectURL
             highResCanvas.toBlob(blob => {
                 if (!blob) {
                     hideDownloadProgress();
@@ -1096,7 +1177,6 @@ function saveToAlbumUniversal() {
                 
                 updateDownloadProgress('正在准备下载...', 70);
                 
-                // 方法1: 尝试使用File System Access API
                 if ('showSaveFilePicker' in window) {
                     try {
                         window.showSaveFilePicker({
@@ -1114,17 +1194,14 @@ function saveToAlbumUniversal() {
                             showToast('图片已保存到设备', 'success');
                         }).catch(fsError => {
                             console.log('File System API失败:', fsError);
-                            // 回退到传统方法
                             downloadViaAnchor(blob, filename);
                         });
                         return;
                     } catch (fsError) {
                         console.log('File System API失败:', fsError);
-                        // 继续尝试其他方法
                     }
                 }
                 
-                // 方法2: 使用a标签下载
                 downloadViaAnchor(blob, filename);
                 
             }, 'image/png', 1.0);
@@ -1137,7 +1214,6 @@ function saveToAlbumUniversal() {
     }, 300);
 }
 
-// 改进的通过a标签下载
 function downloadViaAnchor(blob, filename) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -1145,9 +1221,7 @@ function downloadViaAnchor(blob, filename) {
     link.download = filename;
     link.style.display = 'none';
     
-    // 为链接添加点击事件处理器
     link.addEventListener('click', function(e) {
-        // 防止默认行为（在某些浏览器中可能需要）
         e.stopPropagation();
     }, false);
     
@@ -1165,10 +1239,8 @@ function downloadViaAnchor(blob, filename) {
     
     updateDownloadProgress('正在触发下载...', 85);
     
-    // 尝试多种触发方式
     let downloadTriggered = false;
     
-    // 方式1: 直接click
     try {
         link.click();
         downloadTriggered = true;
@@ -1176,7 +1248,6 @@ function downloadViaAnchor(blob, filename) {
         console.log('直接click失败:', e1);
     }
     
-    // 方式2: 使用MouseEvent
     if (!downloadTriggered) {
         try {
             const event = new MouseEvent('click', {
@@ -1191,7 +1262,6 @@ function downloadViaAnchor(blob, filename) {
         }
     }
     
-    // 方式3: 使用createEvent (旧浏览器)
     if (!downloadTriggered) {
         try {
             const event = document.createEvent('MouseEvents');
@@ -1206,7 +1276,6 @@ function downloadViaAnchor(blob, filename) {
     if (downloadTriggered) {
         updateDownloadProgress('下载已开始', 95);
         
-        // 根据不同设备显示指南
         setTimeout(() => {
             hideDownloadProgress();
             if (isMobile()) {
@@ -1216,7 +1285,6 @@ function downloadViaAnchor(blob, filename) {
             }
         }, 1500);
         
-        // 自动清理
         setTimeout(cleanup, 10000);
     } else {
         cleanup();
@@ -1228,7 +1296,6 @@ function downloadViaAnchor(blob, filename) {
     }
 }
 
-// 使用File System Access API保存
 async function saveWithFileSystemAccess(canvas, filename) {
     try {
         updateDownloadProgress('正在请求文件访问权限...', 40);
@@ -1237,7 +1304,6 @@ async function saveWithFileSystemAccess(canvas, filename) {
             canvas.toBlob(resolve, 'image/png', 1.0);
         });
         
-        // 尝试保存到下载文件夹
         const opts = {
             suggestedName: filename,
             types: [{
@@ -1256,20 +1322,15 @@ async function saveWithFileSystemAccess(canvas, filename) {
         
     } catch (error) {
         console.log('File System Access失败:', error);
-        // 回退到传统方法
         canvas.toBlob(blob => {
             downloadViaAnchor(blob, filename);
         }, 'image/png', 1.0);
     }
 }
 
-// ==================== 颜色替换功能 ====================
-
-// 选择要替换的颜色
 function selectColorToReplace(color) {
     selectedColor = color;
     
-    // 更新选中颜色信息
     document.getElementById('selectedColorInfo').innerHTML = `
         <p><strong>要替换的颜色：</strong> ${color.id}</p>
         <p><strong>当前颜色：</strong> <span class="color-dot" style="background:rgb(${color.rgb.join(',')})"></span> RGB(${color.rgb.join(',')})</p>
@@ -1277,34 +1338,27 @@ function selectColorToReplace(color) {
         <p>请在下方选择新的颜色：</p>
     `;
     
-    // 显示替换选项
     document.getElementById('replaceOptions').style.display = 'block';
     
-    // 加载调色盘
     loadPaletteForReplacement();
     
-    // 滚动到替换区域
     document.getElementById('colorReplaceSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
     
     showToast(`已选择色号 ${color.id}，请选择替换颜色`, 'info');
 }
 
-// 加载调色盘供替换选择
 function loadPaletteForReplacement() {
     const paletteGrid = document.getElementById('paletteGrid');
     const paletteName = document.getElementById('paletteSelect').value;
     const palette = PALETTES[paletteName];
     
-    // 清空现有内容
     paletteGrid.innerHTML = '';
     
-    // 显示所有颜色
     palette.forEach(color => {
         const colorDiv = document.createElement('div');
         colorDiv.className = 'palette-color';
         colorDiv.onclick = () => selectPaletteColor(color, colorDiv);
         
-        // 如果这个颜色已经在图纸中使用，添加标记
         const isUsedInDrawing = colorStats.some(c => c.id === color.id);
         
         colorDiv.innerHTML = `
@@ -1317,25 +1371,20 @@ function loadPaletteForReplacement() {
         paletteGrid.appendChild(colorDiv);
     });
     
-    // 重置选中状态
     selectedPaletteColor = null;
 }
 
-// 选择调色盘中的颜色
 function selectPaletteColor(color, element) {
-    // 移除之前的选择
     document.querySelectorAll('.palette-color').forEach(el => {
         el.classList.remove('selected');
     });
     
-    // 添加当前选择
     element.classList.add('selected');
     selectedPaletteColor = color;
     
     showToast(`已选择色号 ${color.id} 作为替换颜色`, 'info');
 }
 
-// 搜索调色盘
 function searchPalette() {
     const searchText = document.getElementById('paletteSearch').value.toLowerCase();
     const paletteColors = document.querySelectorAll('.palette-color');
@@ -1352,7 +1401,6 @@ function searchPalette() {
     });
 }
 
-// 执行颜色替换
 function replaceColor() {
     if (!selectedColor || !selectedPaletteColor) {
         showToast('请先选择要替换的颜色和替换目标颜色', 'error');
@@ -1368,16 +1416,13 @@ function replaceColor() {
     
     setTimeout(() => {
         try {
-            // 记录替换关系
             colorReplacements[selectedColor.id] = selectedPaletteColor;
             
-            // 备份原始数据（如果是第一次替换）
             if (originalGridData.length === 0) {
                 originalGridData = [...gridData];
                 originalColorStats = [...colorStats];
             }
             
-            // 更新gridData中的颜色
             let replaceCount = 0;
             for (let i = 0; i < gridData.length; i++) {
                 if (gridData[i].id === selectedColor.id) {
@@ -1386,27 +1431,21 @@ function replaceColor() {
                 }
             }
             
-            // 重新计算统计
             calculateStats();
             
-            // 重新渲染画布和统计表格
             renderCanvas();
             renderStatsTable();
             
-            // 更新统计表格中的颜色点点击事件
             updateStatsTableClickEvents();
             
-            // 隐藏替换选项
             document.getElementById('replaceOptions').style.display = 'none';
             
-            // 更新选中颜色信息
             document.getElementById('selectedColorInfo').innerHTML = `
                 <p><strong>替换完成：</strong> ${selectedColor.id} → ${selectedPaletteColor.id}</p>
                 <p><strong>替换数量：</strong> ${replaceCount} 颗</p>
                 <p>点击下方表格中的其他色号继续替换</p>
             `;
             
-            // 重置选择
             selectedColor = null;
             selectedPaletteColor = null;
             
@@ -1421,7 +1460,6 @@ function replaceColor() {
     }, 300);
 }
 
-// 取消替换
 function cancelReplace() {
     selectedColor = null;
     selectedPaletteColor = null;
@@ -1430,7 +1468,6 @@ function cancelReplace() {
     showToast('已取消颜色替换', 'info');
 }
 
-// 重置所有颜色
 function resetAllColors() {
     if (originalGridData.length === 0) {
         showToast('没有可重置的颜色', 'info');
@@ -1445,29 +1482,22 @@ function resetAllColors() {
     
     setTimeout(() => {
         try {
-            // 恢复原始数据
             gridData = [...originalGridData];
             
-            // 重新计算统计
             calculateStats();
             
-            // 重新渲染画布和统计表格
             renderCanvas();
             renderStatsTable();
             
-            // 更新统计表格中的颜色点点击事件
             updateStatsTableClickEvents();
             
-            // 清空替换记录
             colorReplacements = {};
             originalGridData = [];
             originalColorStats = [];
             
-            // 隐藏替换选项
             document.getElementById('replaceOptions').style.display = 'none';
             document.getElementById('selectedColorInfo').innerHTML = '<p>点击下方表格中的色号进行替换</p>';
             
-            // 重置选择
             selectedColor = null;
             selectedPaletteColor = null;
             
@@ -1482,29 +1512,21 @@ function resetAllColors() {
     }, 300);
 }
 
-// 更新统计表格中的颜色点点击事件
 function updateStatsTableClickEvents() {
-    // 为统计表格中的每个颜色点添加点击事件
     const colorDots = document.querySelectorAll('.color-dot');
     colorDots.forEach((dot, index) => {
-        // 移除旧的事件监听器
         dot.onclick = null;
         
-        // 添加新的事件监听器
         dot.onclick = () => {
             if (colorStats[index]) {
                 selectColorToReplace(colorStats[index]);
             }
         };
         
-        // 添加鼠标悬停效果
         dot.title = `点击替换色号 ${colorStats[index]?.id || ''}`;
     });
 }
 
-// ==================== 增强的浏览器下载方法 ====================
-
-// 方式1：保存到浏览器默认位置
 function saveToBrowser() {
     showDownloadProgress('正在生成高清图片...');
     hideDownloadOptions();
@@ -1512,14 +1534,11 @@ function saveToBrowser() {
     
     setTimeout(() => {
         try {
-            // 先生成高清图片
             renderHighResCanvas(currentDownloadType);
             
-            // 获取高清图片数据
             const highResCanvas = document.getElementById('highResCanvas');
             const dataUrl = highResCanvas.toDataURL('image/png', 1.0);
             
-            // 生成唯一的文件名
             const timestamp = new Date().getTime();
             const random = Math.random().toString(36).substring(2, 8);
             const filename = currentDownloadType === 'pattern' ? 
@@ -1528,7 +1547,6 @@ function saveToBrowser() {
             
             updateDownloadProgress('正在准备下载...', 60);
             
-            // 使用fetch和Blob
             fetch(dataUrl)
                 .then(res => res.blob())
                 .then(blob => {
@@ -1540,9 +1558,7 @@ function saveToBrowser() {
                     link.download = filename;
                     link.style.display = 'none';
                     
-                    // 添加多个事件监听器确保触发
                     link.addEventListener('click', function() {
-                        // 清理
                         setTimeout(() => {
                             URL.revokeObjectURL(url);
                             if (link.parentNode) {
@@ -1555,10 +1571,8 @@ function saveToBrowser() {
                     
                     updateDownloadProgress('正在触发下载...', 90);
                     
-                    // 尝试多种触发方式
                     let success = false;
                     
-                    // 方式1: 直接click
                     try {
                         link.click();
                         success = true;
@@ -1566,7 +1580,6 @@ function saveToBrowser() {
                         console.log('方式1失败:', e);
                     }
                     
-                    // 方式2: 模拟事件
                     if (!success) {
                         try {
                             const event = new MouseEvent('click', {
@@ -1587,7 +1600,6 @@ function saveToBrowser() {
                             hideDownloadProgress();
                             showToast('下载已开始，请检查下载文件夹', 'success');
                             
-                            // 移动端额外提示
                             if (isMobile()) {
                                 setTimeout(() => {
                                     if (isAndroid()) {
@@ -1617,27 +1629,20 @@ function saveToBrowser() {
     }, 500);
 }
 
-// ==================== 改进的手动保存功能 ====================
-
-// 方式3：手动保存（长按图片）- 改进版本
 function manualSave() {
     hideDownloadOptions();
     updateRememberChoice('manual');
     
-    // 生成高清图片
     renderHighResCanvas(currentDownloadType);
     const highResCanvas = document.getElementById('highResCanvas');
     const previewImg = currentDownloadType === 'pattern' ? 
         document.getElementById('downloadImage') : 
         document.getElementById('downloadStatsImage');
     
-    // 设置图片源
     const dataUrl = highResCanvas.toDataURL('image/png', 1.0);
     previewImg.src = dataUrl;
     
-    // 确保图片已加载
     previewImg.onload = function() {
-        // 更新下载提示为更详细的说明
         let hintText = '';
         
         if (isIOS()) {
@@ -1651,17 +1656,14 @@ function manualSave() {
         document.getElementById('downloadHint').textContent = hintText;
         document.getElementById('downloadStatsHint').textContent = hintText;
         
-        // 显示详细的保存指南
         showDetailedSaveGuide();
     };
     
-    // 如果图片已经加载，直接显示指南
     if (previewImg.complete) {
         showDetailedSaveGuide();
     }
 }
 
-// 显示详细保存指南
 function showDetailedSaveGuide() {
     let guideText = '';
     let title = '';
@@ -1702,11 +1704,8 @@ function showDetailedSaveGuide() {
                    '💡 提示：建议保存为PNG格式以保证质量。';
     }
     
-    // 使用alert显示指南
     alert(`${title}\n\n${guideText}\n\n✨ 提示：图片已准备好，请按上述步骤操作。`);
 }
-
-// ==================== 基础功能 ====================
 
 document.getElementById('fileInput').addEventListener('change', function(e) {
     const file = e.target.files[0];
@@ -1763,15 +1762,12 @@ function generatePattern() {
             document.getElementById('downloadBtn').style.display = 'block';
             document.getElementById('statsPanel').style.display = 'block';
             
-            // 显示颜色替换区域
             document.getElementById('colorReplaceSection').classList.add('show');
             
-            // 更新统计表格中的颜色点点击事件
             updateStatsTableClickEvents();
             
-            // 重置颜色替换相关数据
             colorReplacements = {};
-            originalGridData = [...gridData]; // 备份原始数据
+            originalGridData = [...gridData];
             originalColorStats = [...colorStats];
             selectedColor = null;
             selectedPaletteColor = null;
@@ -1779,8 +1775,7 @@ function generatePattern() {
             hideLoading();
             showToast('图纸生成成功！点击色号可进行替换', 'success');
             
-            // 新增：调整网页背景高度
-            adjustBackgroundHeight();
+            optimizeMobileStatsDisplay();
             
         } catch (error) {
             hideLoading();
@@ -1790,33 +1785,26 @@ function generatePattern() {
     }, 100);
 }
 
-// 新增：调整网页背景高度函数
-function adjustBackgroundHeight() {
+function optimizeMobileStatsDisplay() {
     const statsPanel = document.getElementById('statsPanel');
-    const body = document.body;
-    const mainContainer = document.querySelector('.main-container');
-    
-    // 计算统计表格的实际高度
     const statsTableWrap = document.querySelector('.stats-table-wrap');
-    if (statsTableWrap && colorStats.length > 0) {
-        // 计算表格的估计高度（每行约25px）
-        const estimatedTableHeight = colorStats.length * 25;
-        const maxTableHeight = 400; // 表格容器的最大高度
+    const isMobileDevice = window.innerWidth <= 900;
+    
+    if (isMobileDevice && colorStats.length > 0) {
+        statsPanel.classList.add('auto-height');
         
-        // 如果表格高度超过最大值，需要调整整体背景高度
-        if (estimatedTableHeight > maxTableHeight) {
-            // 计算额外需要的高度
-            const extraHeight = estimatedTableHeight - maxTableHeight + 100;
-            
-            // 更新main-container的最小高度
-            mainContainer.style.minHeight = (mainContainer.scrollHeight + extraHeight) + 'px';
-            
-            // 更新body的最小高度
-            const currentBodyHeight = body.scrollHeight;
-            body.style.minHeight = (currentBodyHeight + extraHeight) + 'px';
-            
-            console.log('背景高度已调整，额外增加了' + extraHeight + 'px');
-        }
+        const estimatedHeight = colorStats.length * 35 + 120;
+        
+        statsPanel.style.minHeight = estimatedHeight + 'px';
+        
+        const maxHeight = window.innerHeight * 0.8;
+        statsTableWrap.style.maxHeight = Math.min(estimatedHeight, maxHeight) + 'px';
+        
+        console.log('手机端统计表格优化完成，高度:', estimatedHeight);
+    } else {
+        statsPanel.classList.remove('auto-height');
+        statsPanel.style.minHeight = '';
+        statsTableWrap.style.maxHeight = '400px';
     }
 }
 
@@ -1835,7 +1823,6 @@ function renderStatsTable() {
     const tbody = document.getElementById('statsBody');
     tbody.innerHTML = colorStats.map(c => {
         const percent = (c.count / total * 100).toFixed(1);
-        // 如果有替换记录，显示替换信息
         const replacementInfo = colorReplacements[c.id] ? 
             ` <small style="color:#ed8936;">(原: ${Object.keys(colorReplacements).find(key => colorReplacements[key].id === c.id)})</small>` : '';
         return `<tr><td><strong>${c.id}${replacementInfo}</strong></td><td><span class="color-dot" style="background:rgb(${c.rgb.join(',')})" title="点击替换色号 ${c.id}"></span></td><td>${c.count}</td><td>${percent}%</td></tr>`;
@@ -1958,8 +1945,6 @@ function renderCanvas() {
     ctx.restore();
 }
 
-// ==================== 渲染相关函数 ====================
-
 function renderHighResCanvas(type) {
     const highResCanvas = document.getElementById('highResCanvas');
     const ctx = highResCanvas.getContext('2d');
@@ -1969,7 +1954,6 @@ function renderHighResCanvas(type) {
     const showRuler = document.getElementById('showRuler').checked;
     
     if (type === 'pattern') {
-        // 渲染拼豆图纸
         const margin = showRuler ? 40 * DOWNLOAD_SCALE_FACTOR : 15 * DOWNLOAD_SCALE_FACTOR;
         const gridW = gridWidth * DOWNLOAD_CELL_SIZE;
         const gridH = gridHeight * DOWNLOAD_CELL_SIZE;
@@ -1983,7 +1967,6 @@ function renderHighResCanvas(type) {
         ctx.save();
         ctx.translate(margin, margin);
         
-        // 绘制格子
         for (let y = 0; y < gridHeight; y++) {
             for (let x = 0; x < gridWidth; x++) {
                 const color = gridData[y * gridWidth + x];
@@ -2007,7 +1990,6 @@ function renderHighResCanvas(type) {
             }
         }
         
-        // 绘制网格线
         if (showGrid) {
             ctx.strokeStyle = 'rgba(0,0,0,0.35)';
             ctx.lineWidth = 1.5 * DOWNLOAD_SCALE_FACTOR;
@@ -2026,7 +2008,6 @@ function renderHighResCanvas(type) {
             ctx.strokeRect(0, 0, gridW, gridH);
         }
         
-        // 绘制坐标
         if (showRuler) {
             ctx.fillStyle = '#666';
             ctx.font = `${12 * DOWNLOAD_SCALE_FACTOR}px Arial`;
@@ -2041,7 +2022,6 @@ function renderHighResCanvas(type) {
             }
         }
         
-        // 绘制色卡
         if (showLegend && colorStats.length > 0) {
             ctx.translate(0, gridH + 18 * DOWNLOAD_SCALE_FACTOR);
             ctx.fillStyle = '#333';
@@ -2069,7 +2049,6 @@ function renderHighResCanvas(type) {
         }
         ctx.restore();
     } else {
-        // 渲染统计表格
         renderHighResStatsCanvas();
     }
 }
@@ -2140,8 +2119,6 @@ function renderHighResStatsCanvas() {
     ctx.strokeRect(padding, startY, width - padding*2, (colorStats.length + 1) * rowHeight);
 }
 
-// ==================== 其他功能 ====================
-
 function fitToScreen() {
     const canvas = document.getElementById('mainCanvas');
     const container = document.getElementById('previewArea');
@@ -2165,22 +2142,18 @@ function applyScale() {
     canvas.style.height = '100%';
 }
 
-// 修复的openDownloadModal函数
 function openDownloadModal() {
-    // 检查是否有统计数据
     if (!colorStats || colorStats.length === 0 || gridData.length === 0) {
         showToast('请先生成图纸！', 'error');
         return;
     }
     
     try {
-        // 显示当前canvas的内容
         const canvas = document.getElementById('mainCanvas');
         if (canvas) {
             document.getElementById('downloadImage').src = canvas.toDataURL('image/png');
         }
         
-        // 创建统计表格图片
         renderStatsCanvas();
         const statsCanvas = document.getElementById('statsCanvas');
         if (statsCanvas) {
@@ -2208,11 +2181,9 @@ function switchTab(btn, tab) {
     document.getElementById('tabStats').style.display = tab === 'stats' ? 'block' : 'none';
 }
 
-// 显示下载选项弹窗
 function showDownloadOptions(type) {
     currentDownloadType = type;
     
-    // 如果有记住的选择，直接使用该选择
     if (rememberedChoice && rememberChoiceChecked) {
         if (rememberedChoice === 'browser') {
             saveToBrowser();
@@ -2224,7 +2195,6 @@ function showDownloadOptions(type) {
         return;
     }
     
-    // 否则显示选项弹窗
     document.getElementById('downloadOptions').classList.add('show');
 }
 
@@ -2232,7 +2202,6 @@ function hideDownloadOptions() {
     document.getElementById('downloadOptions').classList.remove('show');
 }
 
-// 更新记忆选择
 function updateRememberChoice(choice) {
     rememberChoiceChecked = document.getElementById('rememberChoice').checked;
     
@@ -2243,7 +2212,6 @@ function updateRememberChoice(choice) {
     }
 }
 
-// 新增：统计表格渲染函数
 function renderStatsCanvas() {
     const statsCanvas = document.getElementById('statsCanvas');
     if (!statsCanvas || !colorStats || colorStats.length === 0) return;
@@ -2312,7 +2280,6 @@ function renderStatsCanvas() {
     ctx.strokeRect(padding, startY, width - padding*2, (colorStats.length + 1) * rowHeight);
 }
 
-// 新增：更新下载提示
 function updateDownloadHint() {
     const hintText = isMobile() ? 
         '长按图片保存到相册，或点击下载按钮选择保存方式' : 
@@ -2322,7 +2289,6 @@ function updateDownloadHint() {
     document.getElementById('downloadStatsHint').textContent = hintText;
 }
 
-// 为图片添加长按提示
 document.addEventListener('DOMContentLoaded', function() {
     updateDownloadHint();
     
@@ -2345,7 +2311,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { passive: true });
     }
     
-    // 确保下载按钮在页面加载后可用
     const downloadBtn = document.getElementById('downloadBtn');
     if (downloadBtn) {
         console.log('下载按钮已找到');
@@ -2366,10 +2331,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// 初始化时检测是否移动设备
-if (isMobile()) {
-    console.log('检测到移动设备，优化下载体验');
-}
+window.addEventListener('resize', function() {
+    if (colorStats.length > 0) {
+        optimizeMobileStatsDisplay();
+    }
+});
 </script>
 </body>
 </html>
